@@ -13,7 +13,7 @@
             @if (Auth::user()->role === 'inspecteur')
             {{-- Menu des inspecteurs --}}
             <li class="nav-item">
-              <a class="nav-link {{ Route::is('inspecteur') ? 'active' : '' }}" href="/inspecteur">Inspecteur</a>
+              <a class="nav-link" href="/inspecteur">Inspecteur</a>
             </li>
             @endif
 
@@ -21,7 +21,7 @@
             @if(Auth::user()->role === 'admin')
             {{-- Menu des admins --}}
             <li class="nav-item">
-              <a class="nav-link {{ Route::is('admin') ? 'active' : '' }}" href="/admin">Admin</a>
+              <a class="nav-link" href="/admin">Admin</a>
             </li>
             @endif
 
@@ -29,7 +29,10 @@
             @if(Auth::user()->role === 'super')
             {{-- Menu des supersadmins --}}
             <li class="nav-item">
-              <a class="nav-link {{ Route::is('superadmin') ? 'active' : '' }}" href="/superadmin">Super Admin</a>
+              <a class="nav-link" href="/superadmin">Super Admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users">Utilisateurs</a>
             </li>
             @endif
           @endauth

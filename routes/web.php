@@ -25,11 +25,32 @@ Route::get('/', function () {
 /**
  * Routes pour l'authentification.
  */
-Route::get('/enregistrer', [UserController::class, 'create'])->middleware(['auth', 'super']);
-Route::post('/users', [UserController::class, 'store'])->middleware(['auth', 'super']);
 Route::get('/connecter', [UserController::class, 'login'])->name('login');
 Route::post('/deconnecter', [UserController::class, 'logout'])->middleware('auth');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+/**
+ * Users Routes - Gestion des utilisateurs
+ * 
+ * index - Show all users
+ * (show - Show single user)
+ * create - Show form to create new user
+ * store - Store new user in database
+ * edit - Show form to edit user
+ * update - Update user in database
+ * delete - Show confirmation form to delete user
+ * destroy - Delete user from database
+ */
+Route::middleware(['auth', 'super'])->name('users')->group(function () {
+    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users/create', [UserController::class, 'create']);
+    // Route::get('/enregistrer', [UserController::class, 'create']);
+    Route::post('/users', [UserController::class, 'store']);
+    Route::get('/users/{user}/{employe}/edit', [UserController::class, 'edit']);
+    Route::put('/users/{user}/{employe}', [UserController::class, 'update']);
+    Route::get('/users/{user}/delete', [UserController::class, 'delete']);
+    // Route::delete('/users/{user}', [UserController::class, 'destroy']);
+});
 
 /**
  * Routes des inspecteurs

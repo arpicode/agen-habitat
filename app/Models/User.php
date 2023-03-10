@@ -14,8 +14,6 @@ class User extends Authenticatable
     // use HasApiTokens, HasFactory, Notifiable;
     use HasFactory;
 
-    protected $table = 'users';
-
     public $timestamps = false;
 
     public function getAuthPassword()
@@ -32,12 +30,27 @@ class User extends Authenticatable
         'email',
         'role',
         'mot_de_passe',
+        'est_actif'
     ];
 
     protected $hidden = [
         'mot_de_passe',
-        // 'remember_token',
     ];
+
+    protected static function getUsersAndEmployesNames()
+    {
+        $name = DB::select(
+            "SELECT users.id, CONCAT(employes.prenom, ' ', employes.nom) AS nom,
+                    users.email,
+                    users.role,
+                    users.est_actif,
+                    employes.user_id
+            FROM users
+            JOIN employes ON employes.user_id = users.id"
+        );
+
+        return $name;
+    }
 
     protected static function isActive($email)
     {
@@ -48,6 +61,6 @@ class User extends Authenticatable
             [$email]
         );
         // dd($isActive[0]);
-        return $isActive;
+        return $isActive[0];
     }
 }
