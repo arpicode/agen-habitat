@@ -2,6 +2,8 @@
 
 ## Installation
 
+(Laravel est passé en version 10 il faut une version PHP >= 8.1)
+
 Ouvrir une invite de commande dans la racine du serveur.
 
 Cloner le projet :
