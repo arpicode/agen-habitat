@@ -77,7 +77,6 @@
                 </form>
               </li>
               @else
-              {{-- <li><a class="dropdown-item text-danger" href="/enregistrer"><i class="bi bi-person-plus-fill me-2"></i></i>S'enregistrer</a></li> --}}
               <li><a class="dropdown-item" href="/connecter"><i class="bi bi-box-arrow-in-right me-2"></i>Se connecter</a></li>
               @endauth
             </ul>
