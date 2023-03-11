@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employes', function (Blueprint $table) {
+        Schema::create('locataires', function (Blueprint $table) {
             $table->id();
-            $table->string('nom', 50);
+            $table->uuid('no_locataire');
+            $table->string('nom', 50)
+                ->comment('Nom du locataire présent sur le bail.');
             $table->string('prenom', 50);
-
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('email', 80)->unique();
+            $table->string('telephone', 15)->nullable();
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employes');
+        Schema::dropIfExists('locataires');
     }
 };

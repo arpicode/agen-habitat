@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->string('mot_de_passe');
-            $table->string('role');
+            $table->string('email', 80)->unique();
+            $table->string('mot_de_passe', 100);
+            $table->string('role', 15);
             $table->boolean('est_actif')->default(true);
         });
     }
