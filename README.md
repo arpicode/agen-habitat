@@ -45,3 +45,5 @@ php artisan migrate:fresh --seed
 Créer le `VirtualHost` qui pointe vers le dossier `/public` du projet.
 
 Fin.
+
+(Le mot de passe de tous les utilisateurs : `$123`)
