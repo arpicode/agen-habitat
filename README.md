@@ -44,6 +44,27 @@ php artisan migrate:fresh --seed
 
 Créer le `VirtualHost` qui pointe vers le dossier `/public` du projet.
 
+```apache
+# Exemple
+<VirtualHost *:80>
+	ServerName agenhabitat
+	DocumentRoot "c:/www/agen-habitat/public"
+	<Directory "c:/www/agen-habitat/public">
+        Options +Indexes +Includes +FollowSymLinks +MultiViews
+        AllowOverride All
+        Require local
+     </Directory>
+</VirtualHost>
+```
+
+Penser à mettre à jour le fichier host:
+
+```
+# Exemple
+
+127.0.0.1   agenhabitat
+```
+
 Fin.
 
 (Le mot de passe de tous les utilisateurs : `$123`)

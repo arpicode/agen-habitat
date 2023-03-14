@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -39,12 +38,11 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
  * edit - Show form to edit user
  * update - Update user in database
  * delete - Show confirmation form to delete user
- * destroy - Delete user from database
+ * (destroy - Delete user from database)
  */
-Route::middleware(['auth', 'super'])->name('users')->group(function () {
+Route::middleware(['auth', 'super'])->group(function () {
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/create', [UserController::class, 'create']);
-    // Route::get('/enregistrer', [UserController::class, 'create']);
     Route::post('/users', [UserController::class, 'store']);
     Route::get('/users/{user}/{employe}/edit', [UserController::class, 'edit']);
     Route::put('/users/{user}/{employe}', [UserController::class, 'update']);
@@ -55,14 +53,20 @@ Route::middleware(['auth', 'super'])->name('users')->group(function () {
 /**
  * Routes des inspecteurs
  */
-Route::get('/inspecteur', [InspecteurController::class, 'index'])->middleware(['auth', 'inspecteur']);
+Route::middleware(['auth', 'inspecteur'])->group(function () {
+    Route::get('/inspecteur', [InspecteurController::class, 'index']);
+});
 
 /**
  * Routes des admins
  */
-Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 'admin']);
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+});
 
 /**
  * Routes des supers admins
  */
-Route::get('/superadmin', [SuperAdminController::class, 'index'])->middleware(['auth', 'super']);
+Route::middleware(['auth', 'super'])->group(function () {
+    Route::get('/superadmin', [SuperAdminController::class, 'index']);
+});
