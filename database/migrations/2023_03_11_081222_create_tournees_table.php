@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('tournees', function (Blueprint $table) {
             $table->id();
-            $table->date('date_debut')->nullable();
-            $table->date('date_fin')->nullable();
+            $table->string('nom');
+            // $table->date('date_debut')->nullable();
+            // $table->date('date_fin')->nullable();
 
             $table->foreignId('employe_id')->constrained('employes');
         });
