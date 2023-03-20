@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InspecteurController;
+use App\Http\Controllers\LogementController;
 use App\Http\Controllers\SuperAdminController;
+use App\Models\Logement;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +57,8 @@ Route::middleware(['auth', 'super'])->group(function () {
  */
 Route::middleware(['auth', 'inspecteur'])->group(function () {
     Route::get('/inspecteur', [InspecteurController::class, 'index']);
+    Route::get('/logement/{employe}', [LogementController::class, 'index']);
+    
 });
 
 /**
