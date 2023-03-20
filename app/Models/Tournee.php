@@ -15,8 +15,10 @@ class Tournee extends Model
 
     protected $fillable = [
         'id',
-        'date_debut',
-        'date_fin',
+        'nom',
+        // 'employe_id',
+        // 'date_debut',
+        // 'date_fin',
     ];
 
     protected static function getAllByEmployeId(Employe $employe)

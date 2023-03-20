@@ -32,8 +32,22 @@
               
               <td>
                 <div class="d-flex gap-1">
-                    <a class="btn btn-success btn-sm" href="/users/{{ $logement->id }}/{{ $logement->id }}/edit"><i class="bi bi-plus-lg"></i></a>
-                    <a class="btn btn-danger btn-sm" href="/users/{{ $logement->id }}/delete"><i class="bi bi-trash"></i></a>
+                  {{-- Action d'ajouter à une tournée --}}
+                    <div class="dropdown">
+                      <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-plus-lg me-2"></i>
+                      </button>
+                      <ul class="dropdown-menu">
+                        @if (count($tournees) > 0)
+                          @foreach ($tournees as $tournee)
+                            <li><a class="dropdown-item" href="/inspections/{{ $tournee->id }}/{{ $logement->id }}/create">{{ $tournee->nom }}</a></li>
+                          @endforeach
+                        @else
+                          <li><a class="dropdown-item fst-italic disabled" href="#">(aucune tournée&hellip;)</a></li>
+                        @endif
+                      </ul>
+                    </div>
+                    {{-- <a class="btn btn-danger btn-sm" href="/users/{{ $logement->id }}/delete"><i class="bi bi-trash"></i></a> --}}
                     {{-- Bouton d'action de suppression sans confirmation --}}
                     {{-- <form action="/users/{{ $logement->id }}" method="POST">
                       @csrf
@@ -48,10 +62,10 @@
 
         </tbody>
       </table>
-      <a class="btn btn-success btn-sm" href="/tournees/{{Auth::user()->id}}"><i class="bi bi-plus-lg"></i>Voir Tournée</a>
+      {{-- <a class="btn btn-success btn-sm" href="/tournees/{{Auth::user()->id}}"><i class="bi bi-plus-lg"></i>Voir Tournée</a> --}}
 
     @else
-      <div class="alert alert-info">Aucun utilisateur.</div>
+      <div class="alert alert-info">Aucun logement.</div>
     @endif
   
 </x-layout>

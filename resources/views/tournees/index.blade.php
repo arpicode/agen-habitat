@@ -29,9 +29,10 @@
               {{-- <td>{{ $tournee->date_debut }}</td>
               <td>{{ $tournee->date_fin }}</td> --}}
               <td>
-                <div class="d-flex gap-1">
-                    <a class="btn btn-primary btn-sm" href="/tournees/{{ $tournee->id }}/edit"><i class="bi bi-pencil"></i></a>
-                    <a class="btn btn-danger btn-sm" href="/tournees/{{ $tournee->id }}/delete"><i class="bi bi-trash"></i></a>
+                <div class="d-flex gap-1 justify-content-end">
+                    <a class="btn btn-secondary btn-sm" href="/tournees/{{ $tournee->employe_id }}/{{ $tournee->id }}"><i class="bi bi-eye"></i></a>
+                    {{-- <a class="btn btn-primary btn-sm" href="/tournees/{{ $tournee->id }}/edit"><i class="bi bi-pencil"></i></a>
+                    <a class="btn btn-danger btn-sm" href="/tournees/{{ $tournee->id }}/delete"><i class="bi bi-trash"></i></a> --}}
                     {{-- Bouton d'action de suppression sans confirmation --}}
                     {{-- <form action="/tournees/{{ $tournee->id }}" method="POST">
                       @csrf

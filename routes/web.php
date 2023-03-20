@@ -5,9 +5,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TourneeController;
 use App\Http\Controllers\InspecteurController;
+use App\Http\Controllers\InspectionController;
 use App\Http\Controllers\LogementController;
 use App\Http\Controllers\SuperAdminController;
-use App\Models\Logement;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +59,11 @@ Route::middleware(['auth', 'super'])->group(function () {
 Route::middleware(['auth', 'inspecteur'])->group(function () {
     Route::get('/inspecteur', [InspecteurController::class, 'index']);
     Route::get('/tournees/{employe}', [TourneeController::class, 'index']);
-    Route::get('/logement/{employe}', [LogementController::class, 'index']);
-
+    Route::get('/tournees/{employe}/{tournee}', [TourneeController::class, 'show']);
+    Route::get('/tournees/{employe}/create', [TourneeController::class, 'create']);
+    Route::get('/logements/{employe}', [LogementController::class, 'index']);
+    Route::get('/inspections/{tournee}/{logement}/create', [InspectionController::class, 'create']);
+    Route::post('/inspections', [InspectionController::class, 'store']);
 });
 
 /**
