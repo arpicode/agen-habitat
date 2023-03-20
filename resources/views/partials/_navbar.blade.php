@@ -16,6 +16,9 @@
               <a class="nav-link" href="/inspecteur">Inspecteur</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/logements/{{Auth::user()->id}}">Logements</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/tournees/{{Auth::user()->id}}">Tournées</a>
             </li>
             @endif
