@@ -47,18 +47,24 @@ class EmployesTableSeeder extends Seeder
             [
                 'id' => 6,
                 'user_id' => 6,
-                'nom' => 'a',
-                'prenom' => 'admin',
+                'nom' => 'Gadget',
+                'prenom' => 'Inspecteur',
             ],
             [
                 'id' => 7,
                 'user_id' => 7,
                 'nom' => 'a',
-                'prenom' => 'super',
+                'prenom' => 'admin',
             ],
             [
                 'id' => 8,
                 'user_id' => 8,
+                'nom' => 'a',
+                'prenom' => 'super',
+            ],
+            [
+                'id' => 9,
+                'user_id' => 9,
                 'nom' => 'u',
                 'prenom' => 'user',
             ],

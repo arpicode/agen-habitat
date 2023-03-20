@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('inspections', function (Blueprint $table) {
             $table->id();
-            $table->uuid('no_inspection');
+            $table->uuid('no_inspection')->nullable();
             $table->dateTime('date_heure_rdv');
-            $table->integer('releve_chauffage');
-            $table->integer('releve_eau_chaude');
-            $table->integer('releve_refroidissement');
-            $table->integer('releve_GES');
+            $table->integer('releve_chauffage')->nullable();
+            $table->integer('releve_eau_chaude')->nullable();
+            $table->integer('releve_refroidissement')->nullable();
+            $table->integer('releve_GES')->nullable();
 
             $table->foreignId('logement_id')->constrained('logements');
             $table->foreignId('tournee_id')->constrained('tournees')->nullable();
