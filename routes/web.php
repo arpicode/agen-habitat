@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TourneeController;
 use App\Http\Controllers\InspecteurController;
 use App\Http\Controllers\SuperAdminController;
 
@@ -55,6 +56,7 @@ Route::middleware(['auth', 'super'])->group(function () {
  */
 Route::middleware(['auth', 'inspecteur'])->group(function () {
     Route::get('/inspecteur', [InspecteurController::class, 'index']);
+    Route::get('/tournees/{employe}', [TourneeController::class, 'index']);
 });
 
 /**
