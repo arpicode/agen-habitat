@@ -59,8 +59,8 @@ Route::middleware(['auth', 'super'])->group(function () {
 Route::middleware(['auth', 'inspecteur'])->group(function () {
     Route::get('/inspecteur', [InspecteurController::class, 'index']);
     Route::get('/tournees/{employe}', [TourneeController::class, 'index']);
-    Route::get('/tournees/{employe}/{tournee}', [TourneeController::class, 'show']);
     Route::get('/tournees/{employe}/create', [TourneeController::class, 'create']);
+    Route::get('/tournees/{employe}/{tournee}', [TourneeController::class, 'show']);
     Route::get('/logements/{employe}', [LogementController::class, 'index']);
     Route::get('/inspections/{tournee}/{logement}/create', [InspectionController::class, 'create']);
     Route::post('/inspections', [InspectionController::class, 'store']);

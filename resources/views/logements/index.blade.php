@@ -1,7 +1,6 @@
 <x-layout>
 
-<h1>Liste des logements a inspecter</h1>
-
+<h1 class="mb-4">Liste des logements a inspecter</h1>
 
     @if (count($logements) > 0)
       <table class="table table-sm align-middle table-hover">
@@ -9,11 +8,11 @@
           <tr>
             <th style="width: 1%;" class="pe-3">Id</th>
             <th>Adresse</th>
-            <th>Numéro Appartement</th>
+            <th>Appt.</th>
             <th>Surface</th>
             <th>Type</th>
-            <th>Période début </th>
-            <th>Période Fin</th>
+            <th>Début </th>
+            <th>Fin</th>
             <th style="width: 1%;">Actions</th>
           </tr>
         </thead>
@@ -32,7 +31,7 @@
               
               <td>
                 <div class="d-flex gap-1">
-                  {{-- Action d'ajouter à une tournée --}}
+                  {{-- Action de créer une inspection + ajouter à une tournée --}}
                     <div class="dropdown">
                       <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         <i class="bi bi-plus-lg me-2"></i>
@@ -62,7 +61,6 @@
 
         </tbody>
       </table>
-      {{-- <a class="btn btn-success btn-sm" href="/tournees/{{Auth::user()->id}}"><i class="bi bi-plus-lg"></i>Voir Tournée</a> --}}
 
     @else
       <div class="alert alert-info">Aucun logement.</div>
