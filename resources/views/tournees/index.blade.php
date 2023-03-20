@@ -3,7 +3,7 @@
     <h1 class="mb-4">Liste des Tournées <span class="small text-secondary fw-normal">[{{count($tournees)}}]</span></h1>
   
     <div {{-- class="text-end" --}}>
-        <a class="btn btn-success btn-sm mb-3" href="/tournees/create">
+        <a class="btn btn-success btn-sm mb-3" href="/tournees/{{ Auth::user()->id  }}/create">
           <i class="bi bi-plus-lg"></i> Ajouter
         </a>
     </div>
@@ -13,9 +13,9 @@
         <thead>
           <tr>
             <th style="width: 1%;" class="pe-3">Id</th>
-            {{-- <th>Nom Tournée</th> --}}
-            <th>Date Début</th>
-            <th>Date Fin</th>
+            <th>Nom</th>
+            {{-- <th>Date Début</th> --}}
+            {{-- <th>Date Fin</th> --}}
             <th style="width: 1%;">Actions</th>
           </tr>
         </thead>
@@ -25,9 +25,9 @@
           @foreach ($tournees as $tournee)
             <tr>
               <th class="fw-lighter text-secondary">#{{ $tournee->id }}</th>
-             {{-- <td>{{ $tourn->nom }}</td> --}}
-              <td>{{ $tournee->date_debut }}</td>
-              <td>{{ $tournee->date_fin }}</td>
+             <td>{{ $tournee->nom }}</td>
+              {{-- <td>{{ $tournee->date_debut }}</td>
+              <td>{{ $tournee->date_fin }}</td> --}}
               <td>
                 <div class="d-flex gap-1">
                     <a class="btn btn-primary btn-sm" href="/tournees/{{ $tournee->id }}/edit"><i class="bi bi-pencil"></i></a>
