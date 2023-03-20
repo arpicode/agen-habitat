@@ -5,7 +5,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TourneeController;
 use App\Http\Controllers\InspecteurController;
+use App\Http\Controllers\LogementController;
 use App\Http\Controllers\SuperAdminController;
+use App\Models\Logement;
 
 /*
 |--------------------------------------------------------------------------
