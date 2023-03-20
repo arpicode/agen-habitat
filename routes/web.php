@@ -59,6 +59,8 @@ Route::middleware(['auth', 'super'])->group(function () {
 Route::middleware(['auth', 'inspecteur'])->group(function () {
     Route::get('/inspecteur', [InspecteurController::class, 'index']);
     Route::get('/tournees/{employe}', [TourneeController::class, 'index']);
+    Route::get('/logement/{employe}', [LogementController::class, 'index']);
+
 });
 
 /**
