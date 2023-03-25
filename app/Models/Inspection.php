@@ -21,8 +21,9 @@ class Inspection extends Model
     protected static function findAllByTourneeId(Tournee $tournee)
     {
         $inspections = DB::select(
-            "SELECT inspections.*
+            "SELECT inspections.*, logements.adresse
              FROM inspections
+             JOIN logements ON logements.id = inspections.logement_id
              WHERE inspections.tournee_id = ?",
             [$tournee->id]
         );

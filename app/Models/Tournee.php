@@ -14,9 +14,9 @@ class Tournee extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id',
+        // 'id',
         'nom',
-        // 'employe_id',
+        'employe_id',
         // 'date_debut',
         // 'date_fin',
     ];

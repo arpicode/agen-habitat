@@ -18,7 +18,7 @@
       <tr>
         <th class="fw-lighter text-secondary">#{{ $inspection->id }}</th>
         <td>{{ $inspection->date_heure_rdv }}</td>
-        <td>{{ $inspection->logement_id }}</td>
+        <td>{{ $inspection->adresse }}</td>
       </tr>
     @endforeach
 

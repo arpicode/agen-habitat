@@ -36,9 +36,23 @@ class TourneeController extends Controller
     public function create(Employe $employe)
     {
         if ($employe->id == Auth::user()->id) {
-            return view('tournees.create');
+            return view('tournees.create', [
+                'employe' => $employe,
+            ]);
         } else {
             return new Response("Vous n'êtes pas autorisé à accéder à cette page", 403);
         }
+    }
+
+    public function store(Request $req, Employe $employe)
+    {
+        $fields = $req->validate([
+            'nom' => 'required|unique:tournees,nom',
+            'employe_id' => "required|in:$employe->id"
+        ]);
+
+        Tournee::create($fields);
+
+        return redirect("/tournees/$employe->id");
     }
 }
