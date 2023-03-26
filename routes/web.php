@@ -65,6 +65,7 @@ Route::middleware(['auth', 'inspecteur'])->group(function () {
     Route::get('/logements/{employe}', [LogementController::class, 'index']);
     Route::get('/inspections/{tournee}/{logement}/create', [InspectionController::class, 'create']);
     Route::post('/inspections', [InspectionController::class, 'store']);
+    Route::delete('/inspections/{employe}/{inspection}', [InspectionController::class, 'destroy']);
 });
 
 /**

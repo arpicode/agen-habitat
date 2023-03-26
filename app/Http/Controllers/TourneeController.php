@@ -28,7 +28,8 @@ class TourneeController extends Controller
         if ($employe->id == Auth::user()->id) {
             // dd(Tournee::find($tournee->id));
             return view('tournees.show', [
-                'inspections' => Inspection::findAllByTourneeId($tournee)
+                'inspections' => Inspection::findAllByTourneeId($tournee),
+                'employe' => $employe,
             ]);
         }
     }

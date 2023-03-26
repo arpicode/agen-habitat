@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Employe;
 use App\Models\Tournee;
 use App\Models\Logement;
 use App\Models\Inspection;
@@ -34,5 +35,16 @@ class InspectionController extends Controller
         Inspection::create($fields);
 
         return redirect('/logements' . '/' . Auth::user()->id);
+    }
+
+    public function destroy(Employe $employe, Inspection $inspection)
+    {
+        if (Auth::user() && (Auth::user()->id == $employe->id)) {
+            $tourneeId = $inspection->tournee_id;
+            $inspection->delete();
+
+            return redirect("/tournees/$employe->id/$tourneeId");
+        }
+        return view('login');
     }
 }
