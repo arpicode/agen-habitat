@@ -42,4 +42,25 @@ class Logement extends Model
      {
           return true;
      }
+
+     protected static function getNbLogementsAll()
+     {
+          $nblogement = DB::select(
+               "SELECT COUNT(*) AS nbId
+                FROM logements"
+          );
+          $result = $nblogement[0]->nbId;
+          return $result;
+     }
+
+     protected static function getNbLogementsWithRapport()
+     {
+          $nblogement = DB::select(
+               "SELECT COUNT(l.id) AS nbId
+               FROM logements l
+               WHERE l.id IN(SELECT logement_id FROM inspections i WHERE id IN(SELECT inspection_id FROM rapports));"
+          );
+          $result = $nblogement[0]->nbId;
+          return $result;
+     }
 }
