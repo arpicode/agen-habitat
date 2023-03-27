@@ -17,6 +17,7 @@ class TourneeController extends Controller
         if ($employe->id == Auth::user()->id) {
             return view('tournees.index', [
                 'tournees' => Tournee::getAllByEmployeId($employe),
+                'employe' => $employe,
             ]);
         } else {
             return new Response("Vous n'êtes pas autorisé à accéder à cette liste", 403);
@@ -55,5 +56,13 @@ class TourneeController extends Controller
         Tournee::create($fields);
 
         return redirect("/tournees/$employe->id");
+    }
+
+    public function destroy(Employe $employe,Tournee $tournee){
+        if ($employe->id == Auth::user()->id) {
+                $tournee->delete();
+                return redirect("/tournees/$employe->id");
+        }
+        return view('users.login');
     }
 }

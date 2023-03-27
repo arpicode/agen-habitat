@@ -14,6 +14,7 @@
           <tr>
             <th style="width: 1%;" class="pe-3">Id</th>
             <th>Nom</th>
+            <th>Inspections</th>
             {{-- <th>Date Début</th> --}}
             {{-- <th>Date Fin</th> --}}
             <th style="width: 1%;">Actions</th>
@@ -26,6 +27,7 @@
             <tr>
               <th class="fw-lighter text-secondary">#{{ $tournee->id }}</th>
              <td>{{ $tournee->nom }}</td>
+             <td>{{$tournee->nbInspections}}</td>
               {{-- <td>{{ $tournee->date_debut }}</td>
               <td>{{ $tournee->date_fin }}</td> --}}
               <td>
@@ -34,12 +36,15 @@
                     {{-- <a class="btn btn-primary btn-sm" href="/tournees/{{ $tournee->id }}/edit"><i class="bi bi-pencil"></i></a>
                     <a class="btn btn-danger btn-sm" href="/tournees/{{ $tournee->id }}/delete"><i class="bi bi-trash"></i></a> --}}
                     {{-- Bouton d'action de suppression sans confirmation --}}
-                    {{-- <form action="/tournees/{{ $tournee->id }}" method="POST">
+
+                     <form action="/tournees/{{$employe->id}}/{{ $tournee->id }}" method="POST">
                       @csrf
                       @method('DELETE')
-                    
-                      <button class="btn btn-danger btn-sm" type="submit"><i class="bi bi-trash"></i></button> --}}
-                    {{-- </form> --}}
+                      @php
+                        $disable = $tournee->nbInspections ? 'disabled' : '';
+                      @endphp
+                      <button class="btn btn-danger btn-sm" type="submit" {{$disable}}><i class="bi bi-trash"></i></button> 
+                     </form> 
                 </div>
               </td>
             </tr>

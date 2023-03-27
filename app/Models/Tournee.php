@@ -24,11 +24,19 @@ class Tournee extends Model
     protected static function getAllByEmployeId(Employe $employe)
     {
 
+        // $all = DB::select(
+        //     "SELECT * FROM tournees WHERE employe_id = ?",
+        //     [$employe->id]
+        // );
+      
         $all = DB::select(
-            "SELECT * FROM tournees WHERE employe_id = ?",
-            [$employe->id]
-        );
-
+                "SELECT tournees.*, COUNT(inspections.tournee_id) nbInspections
+                FROM tournees
+                LEFT JOIN inspections ON inspections.tournee_id = tournees.id
+                WHERE tournees.employe_id = ?
+                GROUP BY tournees.id",
+                 [$employe->id]
+             );
         return $all;
     }
 }

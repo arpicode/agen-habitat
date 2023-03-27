@@ -30,7 +30,6 @@ Route::get('/', function () {
 Route::get('/connecter', [UserController::class, 'login'])->name('login');
 Route::post('/deconnecter', [UserController::class, 'logout'])->middleware('auth');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
-
 /**
  * Users Routes - Gestion des utilisateurs
  * 
@@ -62,6 +61,7 @@ Route::middleware(['auth', 'inspecteur'])->group(function () {
     Route::post('/tournees/{employe}', [TourneeController::class, 'store']);
     Route::get('/tournees/{employe}/create', [TourneeController::class, 'create']);
     Route::get('/tournees/{employe}/{tournee}', [TourneeController::class, 'show']);
+    Route::delete('/tournees/{employe}/{tournee}',[TourneeController::class,'destroy']);
     Route::get('/logements/{employe}', [LogementController::class, 'index']);
     Route::get('/inspections/{tournee}/{logement}/create', [InspectionController::class, 'create']);
     Route::post('/inspections', [InspectionController::class, 'store']);
