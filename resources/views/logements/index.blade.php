@@ -3,16 +3,16 @@
 <h1 class="mb-4">Liste des logements a inspecter</h1>
 
     @if (count($logements) > 0)
-      <table class="table table-sm align-middle table-hover">
+      <table id="logement-table" class="table table-sm align-middle table-hover">
         <thead>
           <tr>
-            <th style="width: 1%;" class="pe-3">Id</th>
+            <th style="width: 1%;" class="pe-4">Id</th>
             <th>Adresse</th>
             <th>Appt.</th>
             <th>Surface</th>
             <th>Type</th>
-            <th>Début </th>
-            <th>Fin</th>
+            <th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Date de début de période d'inspection">Début</th>
+            <th data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Date de fin de période d'inspection">Fin</th>
             <th style="width: 1%;">Actions</th>
           </tr>
         </thead>
@@ -65,5 +65,22 @@
     @else
       <div class="alert alert-info">Aucun logement.</div>
     @endif
-  
+
+      <script>
+        $(document).ready(function() {
+        var table = new DataTable('#logement-table', {
+          language: {
+              url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json',
+          },
+          order: [],
+          columnDefs: [
+            { "orderable": false, "targets": 2 },
+            { "orderable": false, "targets": 7 }
+          ]
+        });
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+      })
+      </script>
 </x-layout>

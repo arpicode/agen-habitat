@@ -21,6 +21,11 @@ class InspectionController extends Controller
         ]);
     }
 
+    public function edit(Employe $employe, Inspection $inspection)
+    {
+        return view('inspections.edit');
+    }
+
     public function store(Request $req)
     {
         $fields = $req->validate([

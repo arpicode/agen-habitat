@@ -9,10 +9,10 @@
     </div>
   
     @if (count($users) > 0)
-      <table class="table table-sm align-middle table-hover">
+      <table id="user-table" class="table table-sm align-middle table-hover">
         <thead>
           <tr>
-            <th style="width: 1%;" class="pe-3">Id</th>
+            <th style="width: 1%;" class="pe-4">Id</th>
             <th>Employé</th>
             <th>E-mail</th>
             <th>Rôle</th>
@@ -55,5 +55,16 @@
     @else
       <div class="alert alert-info">Aucun utilisateur.</div>
     @endif
-  
-  </x-layout>
+      <script>
+        var table = new DataTable('#user-table', {
+          language: {
+              url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json',
+          },
+          columnDefs: [
+            { "orderable": false, "targets": 4 },
+            { "orderable": false, "targets": 5 }
+          ]
+        });
+
+      </script>
+</x-layout>

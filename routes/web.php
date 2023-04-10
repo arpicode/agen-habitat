@@ -61,9 +61,10 @@ Route::middleware(['auth', 'inspecteur'])->group(function () {
     Route::post('/tournees/{employe}', [TourneeController::class, 'store']);
     Route::get('/tournees/{employe}/create', [TourneeController::class, 'create']);
     Route::get('/tournees/{employe}/{tournee}', [TourneeController::class, 'show']);
-    Route::delete('/tournees/{employe}/{tournee}',[TourneeController::class,'destroy']);
+    Route::delete('/tournees/{employe}/{tournee}', [TourneeController::class, 'destroy']);
     Route::get('/logements/{employe}', [LogementController::class, 'index']);
     Route::get('/inspections/{tournee}/{logement}/create', [InspectionController::class, 'create']);
+    Route::get('/inspections/{tournee}/{logement}/edit', [InspectionController::class, 'edit']);
     Route::post('/inspections', [InspectionController::class, 'store']);
     Route::delete('/inspections/{employe}/{inspection}', [InspectionController::class, 'destroy']);
 });

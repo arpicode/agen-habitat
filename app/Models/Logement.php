@@ -31,7 +31,7 @@ class Logement extends Model
                 WHERE employe_id = ?
                 AND logements.id NOT IN (SELECT inspections.logement_id
                                         FROM inspections)
-                ORDER BY logements.fin_periode_inspection",
+                ORDER BY logements.fin_periode_inspection ASC",
                [$employe->id]
           );
 
