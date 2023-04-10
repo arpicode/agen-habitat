@@ -10,11 +10,15 @@
       <p class="text-danger small mt-1 mb-0">{{ $message }}</p>
     @enderror
     
-    <label class="form-label mt-2" for="password">Mot de passe<sup>&nbsp;*</sup></label>
+    <label class="form-label mt-2 mb-2" for="password">Mot de passe<sup>&nbsp;*</sup></label>
     <input id="password" class="form-control form-control-sm" type="password" name="password" value="$123">
     @error('mot_de_passe')
       <p class="text-danger small mt-1 mb-0">{{ $message }}</p>
     @enderror
+
+    <div class="text-end pt-2">
+      <a class="small" href="">Mot de passe oublié ?</a>
+    </div>
     
     <p class="small text-secondary mt-4"><sup>&nbsp;*</sup> champs obligatoires.</p> 
     
